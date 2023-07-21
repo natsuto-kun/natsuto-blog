@@ -3,10 +3,37 @@ import ListItem from '../components/ListItem.astro';
 import Layout from '../layouts/Layout.astro';
 import { getAllBlogs } from '../lib/blog';
 import { BLOG_NAME } from '../consts/message';
+import { SEO } from 'astro-seo';
 const blogs = await getAllBlogs();
 ---
 
 <Layout title={BLOG_NAME}>
+	<SEO
+    title="くみちょうのブログ"
+    description=""
+    openGraph={{
+      basic: {
+        title: "くみちょうのブログ",
+        type: "any",
+        image: "../../public/test.jpg"
+      }
+    }}
+    twitter={{
+      creator: "@hansyamodesu"
+    }}
+    extend={{
+      link: [{ rel: "icon", href: "/public/favicon.svg" }],
+      meta: [
+        {
+          name: "twitter: image",
+          content: "/public/test.jpg"
+        },
+        { name: "twitter:title", content: "Kumityo" },
+        { name: "twitter:description", content: "student" }
+      ]
+    }}
+    }
+  />
 	<main>
 		{
 			blogs.map((blog) => {
