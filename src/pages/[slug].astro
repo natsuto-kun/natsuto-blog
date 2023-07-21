@@ -3,6 +3,7 @@ import { getAllBlogs } from "../lib/blog";
 import lib from 'zenn-markdown-html';
 import { Blog } from "../components/Blog";
 import Layout from "../layouts/Layout.astro";
+import { SEO } from "astro-seo";
 import type { MarkdownOptions } from "zenn-markdown-html/lib/types";
  // build時にそのまま使うとエラーになるため修正
 type MarkdownHtml = (text: string, options?: MarkdownOptions) => string
@@ -37,6 +38,32 @@ const { title, tags, date, body } = Astro.props
 const html = markdownHtml(body)
 ---
 <Layout title={title}>
+  <SEO
+    title={title}
+    description=""
+    openGraph={{
+      basic: {
+        title: {title},
+        type: {tags},
+        image: "../../public/test.jpg"
+      }
+    }}
+    twitter={{
+      creator: "@hansyamodesu"
+    }}
+    extend={{
+      link: [{ rel: "icon", href: "/public/favicon.svg" }],
+      meta: [
+        {
+          name: "twitter: image",
+          content: "/public/test.jpg"
+        },
+        { name: "twitter:title", content: "Kumityo" },
+        { name: "twitter:description", content: "student" }
+      ]
+    }}
+    }
+  />
   <div class="m-auto p-5 max-w-xl">
     <div class="pb-5 border-b-2 mb-10 border-purple-400">
       <div>{date}</div>
