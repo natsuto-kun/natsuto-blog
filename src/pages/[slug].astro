@@ -45,7 +45,7 @@ const html = markdownHtml(body)
       basic: {
         title: {title},
         type: {tags},
-        image: "../../public/test.jpg"
+        image: "/public/icon.png"
       }
     }}
     twitter={{
@@ -56,10 +56,10 @@ const html = markdownHtml(body)
       meta: [
         {
           name: "twitter: image",
-          content: "/public/test.jpg"
+          content: "/public/icon.jpg"
         },
-        { name: "twitter:title", content: "Kumityo" },
-        { name: "twitter:description", content: "student" }
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: "kumityo's blog" }
       ]
     }}
     }
